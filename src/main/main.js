@@ -56,7 +56,7 @@ export default function Main() {
                         <select
                             onChange={(e) => setLocation(e.target.value)}
                             className={classes.select} defaultValue="Choose location">
-                            <option enabled="true">
+                            <option enabled>
                                 Choose Location
                             </option>
                             {
