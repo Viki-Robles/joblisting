@@ -2,12 +2,16 @@ import './App.css';
 import Main from './main';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import logo from './images/logocastle.png';
 
 const useStyles = makeStyles((theme) => ({
-        typography: {
-          marginTop:'60px'
+        typography:{
+          marginBottom:'30px'
         },
+        image: {
+          width:'11%',
+          marginTop:'60px'
+        }
        
 }));
 
@@ -16,8 +20,8 @@ function App() {
 
   return (
     <div className="App">
-    
-      <Typography variant='h2' className={classes.typography}>TechPal</Typography>
+      <img src={logo} alt='' className={classes.image}/>
+      <Typography variant='h3' className={classes.typography}>TechPal</Typography>
       <Main/>
 
     </div>

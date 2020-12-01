@@ -10,7 +10,7 @@ import Spinner from './spinner';
     //API: https://jobs.github.com/positions.json?description=python
     //https://cors-anywhere.herokuapp.com/
 
-    
+
 
 const useStyles = makeStyles((theme) => ({
     form: {
@@ -62,7 +62,7 @@ export default function Main() {
                         <select
                             onChange={(e) => setLocation(e.target.value)}
                             className={classes.select} defaultValue="Choose location">
-                            <option disabled>
+                            <option enabled>
                                 Choose Location
                             </option>
                             {
