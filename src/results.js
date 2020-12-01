@@ -1,10 +1,23 @@
 import React, { useState, useEffect } from "react";
 import Job from './job';
 import './results.css';
+import Spinner from './spinner';
+import { Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles(() => ({
+    spinner: {
+        justifyContent:'center',
+        marginTop:'10px'
+    }
+}));
 
 export default function Results(props) {
     const [jobs, setJobs] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
+    const classes = useStyles();
+
 
     useEffect(() => {
         fetch(
@@ -19,7 +32,11 @@ export default function Results(props) {
     }, [props.location]);
 
     if (!isLoaded) {
-        return <div>Loading</div>
+        return (
+            <Grid container className={classes.spinner}>
+                <Spinner />
+            </Grid>
+        )
     } else {
         return (
             <div className="Results" id="Results">

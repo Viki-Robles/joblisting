@@ -2,19 +2,32 @@ import React, { useState, useEffect } from 'react';
 import Results from './results';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
+import Spinner from './spinner';
 
+
+
+//API: https://jobs.github.com/positions.json?location=london
+    //API: https://jobs.github.com/positions.json?description=python
+    //https://cors-anywhere.herokuapp.com/
+
+    
 
 const useStyles = makeStyles((theme) => ({
-        form: {
-            margin:'0 auto'
-        },
-        select: {
-            backgroundColor: 'black',
-            padding:'15px',
-            color:'white',
-            fontSize:'1rem',
-            borderRadius:'5px'
-        }
+    form: {
+        margin: '0 auto',
+        borderRadius: '5px'
+    },
+    select: {
+        backgroundColor: '#B4F8C8',
+        padding: '15px',
+        color: 'black',
+        fontSize: '1rem',
+        borderRadius: '10px',
+        border:'1px #B4F8C8'
+    },
+    spinner: {
+        justifyContent:'center'
+    }
 }));
 
 export default function Main() {
@@ -25,9 +38,6 @@ export default function Main() {
     const [location, setLocation] = useState("");
 
     const URL = "https://jobs.github.com/positions.json";
-    //API: https://jobs.github.com/positions.json?location=london
-    //API: https://jobs.github.com/positions.json?description=python
-    //https://cors-anywhere.herokuapp.com/
 
     useEffect(() => {
         fetch(URL)
@@ -39,7 +49,11 @@ export default function Main() {
     });
 
     if (!isLoaded) {
-        return <div>Loadin Main...</div>;
+        return (
+            <Grid container className={classes.spinner}>
+                <Spinner />
+            </Grid>
+        );
     } else {
         return (
             <>
@@ -56,7 +70,7 @@ export default function Main() {
                                     .sort((a, b) => (
                                         a.location > b.location ? 1 : -1))
                                     .map(({ location }) => (
-                                      
+
                                         <option
                                             value={location}>
                                             {location}
