@@ -33,10 +33,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Main() {
     const classes = useStyles();
 
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [listofJobs, setListofJobs] = useState([]);
-    const [location, setLocation] = useState("");
-
+    const[isLoaded, setIsLoaded] = useState(false);
+    const[listofJobs, setListofJobs] = useState([]);
+    const[location, setLocation] = useState("");
     const URL = "https://jobs.github.com/positions.json";
 
     useEffect(() => {
