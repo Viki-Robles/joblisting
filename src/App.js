@@ -26,8 +26,8 @@ function App() {
       <img src={logo} alt='' className={classes.image} />
       <Typography variant='h3' className={classes.typography}>TechPal</Typography>
       <Grid container direction="column">
-        <Typography variant="h8" className={classes.subtitle}>Choose your job based on</Typography>
-        <Typography variant="h8" className={classes.subtitle}>where you want to live.</Typography>
+        <Typography className={classes.subtitle}>Choose your job based on</Typography>
+        <Typography className={classes.subtitle}>where you want to live.</Typography>
       </Grid>
       <Main />
     </div>

@@ -27,12 +27,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Main() {
-    const classes = useStyles();
-
     const [isLoaded, setIsLoaded] = useState(false);
     const [listofJobs, setListofJobs] = useState([]);
     const [location, setLocation] = useState("");
     const URL = "https://jobs.github.com/positions.json";
+    const classes = useStyles();
 
     useEffect(() => {
         fetch(URL)
@@ -41,7 +40,7 @@ export default function Main() {
                 setListofJobs(json);
                 setIsLoaded(true);
             });
-    });
+    },[]);
 
     if (!isLoaded) {
         return (
@@ -57,16 +56,17 @@ export default function Main() {
                         <select
                             onChange={(e) => setLocation(e.target.value)}
                             className={classes.select} defaultValue="Choose location">
-                            <option enabled>
+                            <option enabled="true">
                                 Choose Location
                             </option>
                             {
                                 listofJobs
                                     .sort((a, b) => (
                                         a.location > b.location ? 1 : -1))
-                                    .map(({ location }) => (
+                                    .map(({ location, id }) => (
 
                                         <option
+                                            key={id}
                                             value={location}>
                                             {location}
                                         </option>

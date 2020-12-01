@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FadeLoader from "react-spinners/FadeLoader";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -10,6 +10,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 export default function Spinner() {
+  const[enabled, setEnabled] = useState(true)
   const classes = useStyles();
 
   return (
@@ -18,7 +19,7 @@ export default function Spinner() {
         className={classes.override}
         size={150}
         color={"#00FA9A"}
-        loading={true}
+        loading={enabled}
       />
     </div>
   );

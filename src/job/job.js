@@ -51,7 +51,7 @@ export default function Job({ title, location, description, company_logo, url, t
     const classes = useStyles();
 
     return (
-        <Grid container md={12} className={classes.container}>
+        <Grid container className={classes.container}>
             <Grid container direction="column">
                 <div className={classes.logo}>
                     <Avatar alt="Remy Sharp" src={company_logo} className={classes.large} />
