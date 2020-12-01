@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Results from './results';
+import Results from '../results/results';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
-import Spinner from './spinner';
+import Spinner from '../spinner/spinner';
 
 
 
@@ -14,13 +14,13 @@ import Spinner from './spinner';
 
 const useStyles = makeStyles((theme) => ({
     form: {
-        margin: '0 auto',
+        margin: '20px auto',
         borderRadius: '5px'
     },
     select: {
         backgroundColor: '#B4F8C8',
         padding: '15px',
-        color: 'black',
+        color: '#444242',
         fontSize: '1rem',
         borderRadius: '10px',
         border:'1px #B4F8C8'

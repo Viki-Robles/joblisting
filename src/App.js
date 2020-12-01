@@ -1,16 +1,20 @@
 import './App.css';
-import Main from './main';
-import { Typography } from '@material-ui/core';
+import Main from './main/main';
+import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import logo from './images/logocastle.png';
 
 const useStyles = makeStyles((theme) => ({
         typography:{
-          marginBottom:'30px'
+          marginBottom:'20px',
+          color:'#585757'
         },
         image: {
           width:'11%',
           marginTop:'60px'
+        },
+        subtitle: {
+          color:'#4CC4B8'
         }
        
 }));
@@ -22,8 +26,11 @@ function App() {
     <div className="App">
       <img src={logo} alt='' className={classes.image}/>
       <Typography variant='h3' className={classes.typography}>TechPal</Typography>
+      <Grid container direction='column'>
+      <Typography variant='h8' className={classes.subtitle}>Choose your job based on</Typography>
+      <Typography variant='h8' className={classes.subtitle}>where you want to live.</Typography>
+      </Grid>
       <Main/>
-
     </div>
   );
 }

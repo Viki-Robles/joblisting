@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
     }
 }));
 export default function Spinner () {
-    const[loading, setLoading] = useState(true)
+    const[loading, setLoading] = useState(true);
     const classes = useStyles();
 
 

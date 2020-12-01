@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Job from './job';
+import Job from '../job/job';
 import './results.css';
-import Spinner from './spinner';
+import Spinner from '../spinner/spinner';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 

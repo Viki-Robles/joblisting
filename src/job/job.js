@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button';
 import ReactMarkdown from 'react-markdown';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import './jobs.css';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         margin:'5px',
-        backgroundColor:'#9400D3',
+        backgroundColor:'#4CC4B8',
         textTransform:'none'
     }
   }));
