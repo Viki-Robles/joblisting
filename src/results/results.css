@@ -1,12 +1,11 @@
-.Results{
+.results{
     padding-bottom: 80px;
-    margin:15px;
-    
+    margin:15px; 
 }
 /*
 repeat(auto-fit, minmax(350px, 1fr));
 */
-.Results-container {
+.results-container {
     display: grid;
     grid-gap: 2px;
     grid-template-columns: 1fr;
@@ -15,10 +14,4 @@ repeat(auto-fit, minmax(350px, 1fr));
 
 .results-wrapper {
     margin:20px;
-
-}
-@media (max-width: 700px) { 
-    .Results-container {
-        grid-template-columns: 1fr;  
-    } 
 }

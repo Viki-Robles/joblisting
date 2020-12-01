@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
-import Job from '../job/job';
-import './results.css';
-import Spinner from '../spinner/spinner';
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import Job from "../job/job";
+import "./results.css";
+import Spinner from "../spinner/spinner";
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 
 const useStyles = makeStyles(() => ({
     spinner: {
-        justifyContent:'center',
-        marginTop:'10px'
+        justifyContent: "center",
+        marginTop: "10px"
     }
 }));
 
 export default function Results(props) {
-    const[jobs, setJobs] = useState([]);
-    const[isLoaded, setIsLoaded] = useState(false);
+    const [jobs, setJobs] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
     const classes = useStyles();
-
 
     useEffect(() => {
         fetch(
@@ -26,7 +25,7 @@ export default function Results(props) {
             .then((json) => {
                 setJobs(json);
                 setIsLoaded(true);
-                let element = document.getElementById("Results");
+                let element = document.getElementById("results");
                 element.scrollIntoView({ behavior: "smooth", block: "nearest" });
             });
     }, [props.location]);
@@ -39,10 +38,11 @@ export default function Results(props) {
         )
     } else {
         return (
-            <div className="Results" id="Results">
-                <div className="Results-container">
+            <div className="results" id="results">
+                <div className="results-container">
                     {jobs
                         .map(({ id, title, location, description, company_url, company_logo, url, type, created_at }) => {
+                            //remove html tags with replace method
                             const descriptionRemoveTags = description.replace(/<\/?[^>]+>/gi, '');
 
                             return (
@@ -57,8 +57,7 @@ export default function Results(props) {
                                             company_logo={company_logo}
                                             url={url}
                                             type={type}
-                                            created_at={created_at}
-                                        />
+                                            created_at={created_at} />
                                     }
                                 </div>
                             )

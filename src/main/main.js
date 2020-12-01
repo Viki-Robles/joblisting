@@ -1,41 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import Results from '../results/results';
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
-import Spinner from '../spinner/spinner';
-
-
+import React, { useState, useEffect } from "react";
+import Results from "../results/results";
+import { makeStyles } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
+import Spinner from "../spinner/spinner";
 
 //API: https://jobs.github.com/positions.json?location=london
-    //API: https://jobs.github.com/positions.json?description=python
-    //https://cors-anywhere.herokuapp.com/
-
-
+//API: https://jobs.github.com/positions.json?description=python
+//https://cors-anywhere.herokuapp.com/
 
 const useStyles = makeStyles((theme) => ({
     form: {
-        margin: '20px auto',
-        borderRadius: '5px'
+        margin: "20px auto",
+        borderRadius: "5px"
     },
     select: {
-        backgroundColor: '#B4F8C8',
-        padding: '15px',
-        color: '#444242',
-        fontSize: '1rem',
-        borderRadius: '10px',
-        border:'1px #B4F8C8'
+        backgroundColor: "#B4F8C8",
+        padding: "15px",
+        color: "#444242",
+        fontSize: "1rem",
+        borderRadius: "10px",
+        border: "1px #B4F8C8"
     },
     spinner: {
-        justifyContent:'center'
+        justifyContent: "center"
     }
 }));
 
 export default function Main() {
     const classes = useStyles();
 
-    const[isLoaded, setIsLoaded] = useState(false);
-    const[listofJobs, setListofJobs] = useState([]);
-    const[location, setLocation] = useState("");
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [listofJobs, setListofJobs] = useState([]);
+    const [location, setLocation] = useState("");
     const URL = "https://jobs.github.com/positions.json";
 
     useEffect(() => {
@@ -80,6 +76,6 @@ export default function Main() {
                 </Grid>
                 {location && <Results location={location} />}
             </>
-        )
+        );
     }
 }
