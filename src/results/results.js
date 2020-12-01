@@ -19,7 +19,7 @@ export default function Results(props) {
 
     useEffect(() => {
         fetch(
-            `https://jobs.github.com/positions.json?location=${props.location}`)
+            `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?location=${props.location}`)
             .then((response) => response.json())
             .then((json) => {
                 setJobs(json);

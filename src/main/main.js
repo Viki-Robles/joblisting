@@ -30,7 +30,7 @@ export default function Main() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [listofJobs, setListofJobs] = useState([]);
     const [location, setLocation] = useState("");
-    const URL = "https://jobs.github.com/positions.json";
+    const URL = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
     const classes = useStyles();
 
     useEffect(() => {
