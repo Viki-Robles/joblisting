@@ -1,0 +1,24 @@
+.Results{
+    padding-bottom: 80px;
+    margin:15px;
+    
+}
+/*
+repeat(auto-fit, minmax(350px, 1fr));
+*/
+.Results-container {
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+.results-wrapper {
+    margin:20px;
+
+}
+@media (max-width: 700px) { 
+    .Results-container {
+        grid-template-columns: 1fr;  
+    } 
+}
