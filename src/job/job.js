@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Typography, Collapse } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import ReactMarkdown from "react-markdown";
@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     logo: {
         display: "flex",
         "& > *": {
-            margin: "0 auto",
+        
         },
     },
     large: {
@@ -43,12 +43,21 @@ const useStyles = makeStyles((theme) => ({
         margin: "5px",
         backgroundColor: "#4CC4B8",
         textTransform: "none"
+    },
+    firstButton: {
+        margin: "5px",
+        backgroundColor: "#4CC4B8",
+        textTransform: "none"
     }
 }));
 
-export default function Job({ title, location, description, company_logo, url, type, created_at }) {
+export default function Job({ title, location, description, company_logo, url, type, created_at, onCountChange = () => {} }) {
     const [open, setOpen] = useState(false);
     const classes = useStyles();
+
+    useEffect(() => {
+        onCountChange(open)
+    })
 
     return (
         <Grid container className={classes.container}>
@@ -63,7 +72,6 @@ export default function Job({ title, location, description, company_logo, url, t
                     {new Date(created_at).toLocaleDateString()}
                 </Typography>
             </Grid>
-
             <Grid container direction="row" justify="flex-start">
                 <Grid item className={classes.item}>
                     <Typography>{location}</Typography>
@@ -72,7 +80,6 @@ export default function Job({ title, location, description, company_logo, url, t
                     <Typography>{type}</Typography>
                 </Grid>
             </Grid>
-
             <Grid container className={classes.buttonContainer}>
                 <Button
                     variant="contained"
@@ -86,10 +93,10 @@ export default function Job({ title, location, description, company_logo, url, t
                     onClick={() => setOpen(prevOpen => !prevOpen)}
                     variant="contained"
                     color={"primary"}
-                    className={classes.button}>
+                    className={classes.firstButton}>
                     {open ? "Hide Details" : "View Details"}
                 </Button>
-                <Collapse in={open}>
+                <Collapse in={open} className={classes.collapse}>
                     <div className=''>
                         <ReactMarkdown source={description} />
                     </div>

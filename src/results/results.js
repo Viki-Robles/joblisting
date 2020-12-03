@@ -17,9 +17,9 @@ export default function Results(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const classes = useStyles();
 
+    const URL = `https://jobs.github.com/positions.json?location=${props.location}`
     useEffect(() => {
-        fetch(
-            `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?location=${props.location}`)
+        fetch(URL)
             .then((response) => response.json())
             .then((json) => {
                 setJobs(json);
@@ -27,7 +27,7 @@ export default function Results(props) {
                 let element = document.getElementById("results");
                 element.scrollIntoView({ behavior: "smooth", block: "nearest" });
             });
-    }, [props.location]);
+    }, [URL]);
 
     if (!isLoaded) {
         return (

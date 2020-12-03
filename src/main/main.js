@@ -3,10 +3,11 @@ import Results from "../results/results";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import Spinner from "../spinner/spinner";
-
 //API: https://jobs.github.com/positions.json?location=london
 //API: https://jobs.github.com/positions.json?description=python
 //https://cors-anywhere.herokuapp.com/
+
+
 
 const useStyles = makeStyles((theme) => ({
     form: {
@@ -33,14 +34,16 @@ export default function Main() {
     const URL = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
     const classes = useStyles();
 
+
     useEffect(() => {
         fetch(URL)
             .then((response) => response.json())
             .then((json) => {
                 setListofJobs(json);
                 setIsLoaded(true);
+
             });
-    },[]);
+    }, []);
 
     if (!isLoaded) {
         return (
@@ -49,6 +52,11 @@ export default function Main() {
             </Grid>
         );
     } else {
+        //remove duplicate locations
+        const removeDuplicates = Array.from(new Set(listofJobs.map(a => a.location)))
+            .map(location => {
+                return listofJobs.find(a => a.location === location)
+            })
         return (
             <>
                 <Grid container className={classes.container}>
@@ -56,21 +64,23 @@ export default function Main() {
                         <select
                             onChange={(e) => setLocation(e.target.value)}
                             className={classes.select} defaultValue="Choose location">
-                            <option enabled>
-                                Choose Location
+                            <option enabled='true'>
+                                Location
                             </option>
-                            {
-                                listofJobs
-                                    .sort((a, b) => (
-                                        a.location > b.location ? 1 : -1))
-                                    .map(({ location, id }) => (
 
-                                        <option
-                                            key={id}
-                                            value={location}>
-                                            {location}
-                                        </option>
-                                    ))}
+                            {
+                                removeDuplicates
+                                    .sort((a, b) => a.location > b.location ? 1 : - 1)
+                                    .map(({ location, id }) => {
+                                        return (
+                                            <option
+                                                key={id}
+                                                value={location}>
+                                                {location}
+                                            </option>
+                                        )
+                                    })
+                            }
                         </select>
                     </form>
                 </Grid>
