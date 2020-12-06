@@ -59,10 +59,7 @@ export default function Results(props) {
                                             created_at={created_at} />
                                     }
                                 </div>
-                            )
-                        }
-
-                        )}
+                            )})}
                 </div>
             </div>
         );

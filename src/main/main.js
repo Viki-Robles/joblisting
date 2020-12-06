@@ -33,7 +33,6 @@ export default function Main() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [listofJobs, setListofJobs] = useState([]);
     const [location, setLocation] = useState("");
-    const [page, setPage] = useState(1);
     const URL = "https://jobs.github.com/positions.json";
     const classes = useStyles();
 
@@ -44,7 +43,6 @@ export default function Main() {
             .then((json) => {
                 setListofJobs(json);
                 setIsLoaded(true);
-
             });
     }, []);
 
