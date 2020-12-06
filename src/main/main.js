@@ -3,9 +3,11 @@ import Results from "../results/results";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import Spinner from "../spinner/spinner";
+
+
+
 //API: https://jobs.github.com/positions.json?location=london
 //API: https://jobs.github.com/positions.json?description=python
-//https://cors-anywhere.herokuapp.com/
 
 
 
@@ -31,7 +33,8 @@ export default function Main() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [listofJobs, setListofJobs] = useState([]);
     const [location, setLocation] = useState("");
-    const URL = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
+    const [page, setPage] = useState(1);
+    const URL = "https://jobs.github.com/positions.json";
     const classes = useStyles();
 
 

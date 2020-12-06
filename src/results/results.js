@@ -16,8 +16,8 @@ export default function Results(props) {
     const [jobs, setJobs] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const classes = useStyles();
-
     const URL = `https://jobs.github.com/positions.json?location=${props.location}`
+
     useEffect(() => {
         fetch(URL)
             .then((response) => response.json())
