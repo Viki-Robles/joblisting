@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Grid, Typography, Collapse } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import ReactMarkdown from "react-markdown";
@@ -50,40 +50,36 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Job({ title, location, description, company_logo, url, type, created_at, onCountChange = () => {} }) {
+export default function Job({ job }) {
     const [open, setOpen] = useState(false);
     const classes = useStyles();
-
-    useEffect(() => {
-        onCountChange(open)
-    })
 
     return (
         <Grid container className={classes.container}>
             <Grid container direction="column">
                 <div className={classes.logo}>
-                    <Avatar alt="Remy Sharp" src={company_logo} className={classes.large} />
+                    <Avatar alt="Remy Sharp" src={job.company_logo} className={classes.large} />
                 </div>
                 <Grid container className={classes.title}>
-                    <Typography>{title}</Typography>
+                    <Typography>{job.title}</Typography>
                 </Grid>
                 <Typography component="h6" className={classes.typography}>
-                    {new Date(created_at).toLocaleDateString()}
+                    {new Date(job.created_at).toLocaleDateString()}
                 </Typography>
             </Grid>
             <Grid container direction="row" justify="flex-start">
                 <Grid item className={classes.item}>
-                    <Typography>{location}</Typography>
+                    <Typography>{job.location}</Typography>
                 </Grid>
                 <Grid item className={classes.item}>
-                    <Typography>{type}</Typography>
+                    <Typography>{job.type}</Typography>
                 </Grid>
             </Grid>
             <Grid container className={classes.buttonContainer}>
                 <Button
                     variant="contained"
                     color="primary"
-                    href={url}
+                    href={job.url}
                     target="_blank"
                     className={classes.button}>
                     Apply
@@ -97,7 +93,7 @@ export default function Job({ title, location, description, company_logo, url, t
                 </Button>
                 <Collapse in={open} className={classes.collapse}>
                     <div className=''>
-                        <ReactMarkdown source={description} />
+                        <ReactMarkdown source={job.largedescription} />
                     </div>
                 </Collapse>
             </Grid>
